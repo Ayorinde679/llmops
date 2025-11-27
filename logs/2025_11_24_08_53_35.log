@@ -1,0 +1,14 @@
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-24T07:58:55.797089Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-24T07:58:55.797817Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-24T07:58:55.798461Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-24T07:58:55.836519Z", "level": "info", "event": "YAML config loaded"}
+{"session_id": "session_20251124_085855_2e44dc25", "temp_dir": "data\\session_20251124_085855_2e44dc25", "faiss_dir": "faiss_index\\session_20251124_085855_2e44dc25", "sessionized": true, "timestamp": "2025-11-24T07:58:55.840609Z", "level": "info", "event": "ChatIngestor initialized"}
+{"uploaded": "Anatomy_1_Lecture_Notes.pdf", "saved_as": "data\\session_20251124_085855_2e44dc25\\9888bf75.pdf", "timestamp": "2025-11-24T07:58:55.846345Z", "level": "info", "event": "File saved for ingestion"}
+{"count": 9, "timestamp": "2025-11-24T07:58:56.701132Z", "level": "info", "event": "Documents loaded"}
+{"chunks": 17, "chunk_size": 1000, "overlap": 200, "timestamp": "2025-11-24T07:58:56.703667Z", "level": "info", "event": "Documents split"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-24T07:58:56.705057Z", "level": "info", "event": "Loading embedding model"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+{"added": 1, "index": "faiss_index\\session_20251124_085855_2e44dc25", "timestamp": "2025-11-24T07:58:59.094465Z", "level": "info", "event": "FAISS index updated"}
+{"k": 5, "fetch_k": 20, "lambda_mult": 0.5, "timestamp": "2025-11-24T07:58:59.095620Z", "level": "info", "event": "Using MMR search"}

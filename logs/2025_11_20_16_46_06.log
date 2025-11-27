@@ -1,0 +1,31 @@
+{"timestamp": "2025-11-20T15:46:06.971929Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T15:46:06.972630Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T15:46:06.972883Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T15:46:06.976814Z", "level": "info", "event": "YAML config loaded"}
+{"session_id": "session_20251120_164606_e598fca1", "temp_dir": "data\\session_20251120_164606_e598fca1", "faiss_dir": "faiss_index\\session_20251120_164606_e598fca1", "sessionized": true, "timestamp": "2025-11-20T15:46:06.978191Z", "level": "info", "event": "ChatIngestor initialized"}
+{"uploaded": "data/Anatomy_1_Lecture_Notes.pdf", "saved_as": "data\\session_20251120_164606_e598fca1\\fb5d8d9f.pdf", "timestamp": "2025-11-20T15:46:06.980612Z", "level": "info", "event": "File saved for ingestion"}
+{"count": 9, "timestamp": "2025-11-20T15:46:07.392072Z", "level": "info", "event": "Documents loaded"}
+{"chunks": 71, "chunk_size": 200, "overlap": 20, "timestamp": "2025-11-20T15:46:07.393479Z", "level": "info", "event": "Documents split"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-20T15:46:07.394029Z", "level": "info", "event": "Loading embedding model"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+{"added": 1, "index": "faiss_index\\session_20251120_164606_e598fca1", "timestamp": "2025-11-20T15:46:10.332494Z", "level": "info", "event": "FAISS index updated"}
+{"k": 5, "fetch_k": 20, "lambda_mult": 0.5, "timestamp": "2025-11-20T15:46:10.332923Z", "level": "info", "event": "Using MMR search"}
+{"timestamp": "2025-11-20T15:46:10.334344Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T15:46:10.334696Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T15:46:10.334997Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T15:46:10.337486Z", "level": "info", "event": "YAML config loaded"}
+{"provider": "google", "model": "gemini-2.0-flash", "timestamp": "2025-11-20T15:46:10.337848Z", "level": "info", "event": "Loading LLM"}
+{"session_id": "session_20251120_164606_e598fca1", "timestamp": "2025-11-20T15:46:10.347923Z", "level": "info", "event": "LLM loaded successfully"}
+{"session_id": "session_20251120_164606_e598fca1", "timestamp": "2025-11-20T15:46:10.348279Z", "level": "info", "event": "ConversationalRAG initialized"}
+{"timestamp": "2025-11-20T15:46:10.349607Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T15:46:10.349957Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T15:46:10.350267Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T15:46:10.352638Z", "level": "info", "event": "YAML config loaded"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-20T15:46:10.352967Z", "level": "info", "event": "Loading embedding model"}
+{"session_id": "session_20251120_164606_e598fca1", "timestamp": "2025-11-20T15:46:10.380184Z", "level": "info", "event": "LCEL graph built successfully"}
+{"index_path": "faiss_index\\session_20251120_164606_e598fca1", "index_name": "index", "search_type": "mmr", "k": 5, "fetch_k": 20, "lambda_mult": 0.5, "session_id": "session_20251120_164606_e598fca1", "timestamp": "2025-11-20T15:46:10.380514Z", "level": "info", "event": "FAISS retriever loaded successfully"}
+Failed to multipart ingest runs: langsmith.utils.LangSmithError: Failed to POST https://eu.api.smith.langchain.com/runs/multipart in LangSmith API. HTTPError('403 Client Error: Forbidden for url: https://eu.api.smith.langchain.com/runs/multipart', '{"error":"Forbidden"}\n')
+Failed to send compressed multipart ingest: langsmith.utils.LangSmithError: Failed to POST https://eu.api.smith.langchain.com/runs/multipart in LangSmith API. HTTPError('403 Client Error: Forbidden for url: https://eu.api.smith.langchain.com/runs/multipart', '{"error":"Forbidden"}\n')
+{"session_id": "session_20251120_164606_e598fca1", "user_input": "hi", "answer_preview": "I don't know.", "timestamp": "2025-11-20T15:47:28.388461Z", "level": "info", "event": "Chain invoked successfully"}
+Failed to send compressed multipart ingest: langsmith.utils.LangSmithError: Failed to POST https://eu.api.smith.langchain.com/runs/multipart in LangSmith API. HTTPError('403 Client Error: Forbidden for url: https://eu.api.smith.langchain.com/runs/multipart', '{"error":"Forbidden"}\n')

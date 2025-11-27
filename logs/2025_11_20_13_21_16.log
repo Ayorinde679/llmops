@@ -1,0 +1,29 @@
+{"timestamp": "2025-11-20T12:21:17.258587Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T12:21:17.259058Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T12:21:17.259362Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T12:21:17.261944Z", "level": "info", "event": "YAML config loaded"}
+{"session_id": "session_20251120_132117_c43e10ac", "temp_dir": "data\\session_20251120_132117_c43e10ac", "faiss_dir": "faiss_index\\session_20251120_132117_c43e10ac", "sessionized": true, "timestamp": "2025-11-20T12:21:17.264773Z", "level": "info", "event": "ChatIngestor initialized"}
+{"uploaded": "data/Anatomy_1_Lecture_Notes.pdf", "saved_as": "data\\session_20251120_132117_c43e10ac\\40ede7c8.pdf", "timestamp": "2025-11-20T12:21:17.266944Z", "level": "info", "event": "File saved for ingestion"}
+{"count": 9, "timestamp": "2025-11-20T12:21:18.218922Z", "level": "info", "event": "Documents loaded"}
+{"chunks": 71, "chunk_size": 200, "overlap": 20, "timestamp": "2025-11-20T12:21:18.220691Z", "level": "info", "event": "Documents split"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-20T12:21:18.221478Z", "level": "info", "event": "Loading embedding model"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+{"added": 1, "index": "faiss_index\\session_20251120_132117_c43e10ac", "timestamp": "2025-11-20T12:21:30.040693Z", "level": "info", "event": "FAISS index updated"}
+{"k": 5, "fetch_k": 20, "lambda_mult": 0.5, "timestamp": "2025-11-20T12:21:30.041243Z", "level": "info", "event": "Using MMR search"}
+{"timestamp": "2025-11-20T12:21:30.043546Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T12:21:30.044308Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T12:21:30.044942Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T12:21:30.053217Z", "level": "info", "event": "YAML config loaded"}
+{"provider": "google", "model": "gemini-2.0-flash", "timestamp": "2025-11-20T12:21:30.054391Z", "level": "info", "event": "Loading LLM"}
+{"session_id": "session_20251120_132117_c43e10ac", "timestamp": "2025-11-20T12:21:30.084358Z", "level": "info", "event": "LLM loaded successfully"}
+{"session_id": "session_20251120_132117_c43e10ac", "timestamp": "2025-11-20T12:21:30.085010Z", "level": "info", "event": "ConversationalRAG initialized"}
+{"timestamp": "2025-11-20T12:21:30.087522Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T12:21:30.088030Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T12:21:30.088441Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T12:21:30.095537Z", "level": "info", "event": "YAML config loaded"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-20T12:21:30.096018Z", "level": "info", "event": "Loading embedding model"}
+{"session_id": "session_20251120_132117_c43e10ac", "timestamp": "2025-11-20T12:21:30.139334Z", "level": "info", "event": "LCEL graph built successfully"}
+{"index_path": "faiss_index\\session_20251120_132117_c43e10ac", "index_name": "index", "search_type": "mmr", "k": 5, "fetch_k": 20, "lambda_mult": 0.5, "session_id": "session_20251120_132117_c43e10ac", "timestamp": "2025-11-20T12:21:30.139846Z", "level": "info", "event": "FAISS retriever loaded successfully"}
+{"session_id": "session_20251120_132117_c43e10ac", "user_input": "what is the document about", "answer_preview": "The document is an introduction to basic human anatomy, defining terms and emphasizing the importance of understanding medical terminology for communi", "timestamp": "2025-11-20T12:22:00.832063Z", "level": "info", "event": "Chain invoked successfully"}
+{"session_id": "session_20251120_132117_c43e10ac", "user_input": "summmarize the document briefly", "answer_preview": "This document emphasizes the importance of understanding terminology in specific fields like medicine and education for effective communication. It al", "timestamp": "2025-11-20T12:23:33.323902Z", "level": "info", "event": "Chain invoked successfully"}

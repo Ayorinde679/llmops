@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Document Assistant</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Marked.js for Markdown rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom Stylesheet served by FastAPI static files mount -->
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body class="bg-slate-50 h-screen flex flex-col font-sans text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between shadow-sm flex-shrink-0">
+        <div class="flex items-center gap-3">
+            <div class="bg-indigo-600 text-white p-2 rounded-lg">
+                <i class="fa-solid fa-robot"></i>
+            </div>
+            <div>
+                <h1 class="font-bold text-xl text-slate-800">DocuChat AI</h1>
+                <p class="text-xs text-slate-500">RAG Powered Knowledge Base</p>
+            </div>
+        </div>
+        <!-- Status Indicator -->
+        <div id="connectionStatus" class="flex items-center gap-2 text-xs font-medium text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            System Ready
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 flex overflow-hidden">
+        
+        <!-- Sidebar / Upload Area -->
+        <aside class="w-80 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 z-10 shadow-lg md:shadow-none md:relative absolute h-full transition-transform transform -translate-x-full md:translate-x-0" id="sidebar">
+            <div class="p-4 border-b border-slate-100">
+                <h2 class="font-semibold text-sm text-slate-500 uppercase tracking-wider mb-4">Knowledge Base</h2>
+                
+                <!-- File Upload Form -->
+                <div class="space-y-3">
+                    <label class="block w-full cursor-pointer group">
+                        <div class="flex flex-col items-center justify-center w-full h-32 border-2 border-slate-300 border-dashed rounded-lg bg-slate-50 group-hover:bg-slate-100 transition-colors">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <i class="fa-solid fa-cloud-arrow-up text-2xl text-slate-400 mb-2 group-hover:text-indigo-500 transition-colors"></i>
+                                <p class="text-xs text-slate-500">Click to upload documents</p>
+                                <p class="text-[10px] text-slate-400 mt-1">PDF, TXT, DOCX</p>
+                            </div>
+                            <input id="fileInput" type="file" class="hidden" multiple />
+                        </div>
+                    </label>
+                    
+                    <!-- Selected Files Preview -->
+                    <div id="fileListPreview" class="hidden space-y-2 max-h-32 overflow-y-auto text-xs">
+                        <!-- JS will populate this -->
+                    </div>
+
+                    <button id="uploadBtn" onclick="uploadFiles()" class="w-full bg-slate-800 hover:bg-slate-900 text-white font-medium py-2 px-4 rounded-lg text-sm transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                        <span>Ingest Documents</span>
+                    </button>
+                    <div id="uploadStatus" class="text-center text-xs mt-2 h-4"></div>
+                </div>
+            </div>
+
+            <!-- Ingested Files List (Mockup of what backend might return) -->
+            <div class="flex-1 overflow-y-auto p-4">
+                <h3 class="text-xs font-semibold text-slate-400 mb-2">Active Documents</h3>
+                <div id="activeDocsList" class="space-y-2">
+                    <div class="text-xs text-slate-400 italic text-center py-4">No documents indexed yet.</div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Chat Area -->
+        <section class="flex-1 flex flex-col relative w-full">
+            
+            <!-- Mobile Toggle -->
+            <button onclick="toggleSidebar()" class="md:hidden absolute top-4 left-4 z-20 bg-white p-2 rounded shadow text-slate-600">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <!-- Chat History -->
+            <div id="chatHistory" class="flex-1 overflow-y-auto p-4 md:p-8 space-y-6 chat-scroll bg-slate-50">
+                
+                <!-- Welcome Message -->
+                <div class="flex gap-4 max-w-3xl mx-auto">
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center flex-shrink-0 text-white text-xs">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="flex-1 space-y-2">
+                        <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700 leading-relaxed">
+                            Hello! I'm ready to answer questions about your documents. Please upload some files on the left to get started.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Input Area -->
+            <div class="bg-white border-t border-slate-200 p-4">
+                <div class="max-w-3xl mx-auto relative">
+                    <form onsubmit="handleChatSubmit(event)" class="relative">
+                        <input 
+                            type="text" 
+                            id="userQuery" 
+                            class="w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-xl focus:ring-indigo-500 focus:border-indigo-500 block p-4 pr-12 shadow-sm" 
+                            placeholder="Ask a question about your documents..." 
+                            required 
+                            autocomplete="off"
+                        >
+                        <button type="submit" id="sendBtn" class="absolute right-2 top-1/2 -translate-y-1/2 p-2 text-indigo-600 hover:text-indigo-800 transition-colors disabled:opacity-50">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </button>
+                    </form>
+                    <div class="text-center mt-2">
+                        <p class="text-[10px] text-slate-400">AI can make mistakes. Verify important information from source documents.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // ==========================================
+        // FASTAPI CONNECTION CONFIGURATION
+        // ==========================================
+        
+        // IMPORTANT: Update this URL to match your running FastAPI server.
+        // If you run 'uvicorn main:app --reload', it usually defaults to port 8000.
+        const API_BASE_URL = 'http://localhost:8000'; 
+        
+        // --- State ---
+        let isUploading = false;
+        let isGenerating = false;
+
+        // --- DOM Elements ---
+        const fileInput = document.getElementById('fileInput');
+        const fileListPreview = document.getElementById('fileListPreview');
+        const uploadBtn = document.getElementById('uploadBtn');
+        const uploadStatus = document.getElementById('uploadStatus');
+        const chatHistory = document.getElementById('chatHistory');
+        const userQueryInput = document.getElementById('userQuery');
+        const sendBtn = document.getElementById('sendBtn');
+        const activeDocsList = document.getElementById('activeDocsList');
+        const sidebar = document.getElementById('sidebar');
+
+        // --- Event Listeners ---
+        
+        fileInput.addEventListener('change', () => {
+            const files = fileInput.files;
+            fileListPreview.innerHTML = '';
+            
+            if (files.length > 0) {
+                fileListPreview.classList.remove('hidden');
+                Array.from(files).forEach(file => {
+                    const div = document.createElement('div');
+                    div.className = 'flex items-center justify-between bg-slate-100 p-2 rounded text-slate-600';
+                    div.innerHTML = `
+                        <span class="truncate max-w-[180px]"><i class="fa-regular fa-file mr-2"></i>${file.name}</span>
+                        <span class="text-xs text-slate-400">${(file.size / 1024).toFixed(1)} KB</span>
+                    `;
+                    fileListPreview.appendChild(div);
+                });
+            } else {
+                fileListPreview.classList.add('hidden');
+            }
+        });
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+        }
+
+        // ==========================================
+        // API INTERACTION FUNCTIONS
+        // ==========================================
+
+        async function uploadFiles() {
+            if (fileInput.files.length === 0) return;
+
+            isUploading = true;
+            uploadBtn.disabled = true;
+            uploadBtn.innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Processing...';
+            uploadStatus.textContent = "Uploading and indexing...";
+            uploadStatus.className = "text-center text-xs mt-2 h-4 text-indigo-600";
+
+            // 1. Prepare FormData
+            const formData = new FormData();
+            Array.from(fileInput.files).forEach(file => {
+                // IMPORTANT: The key 'files' must match the parameter in your FastAPI route.
+                // Example FastAPI: @app.post("/upload") def upload(files: List[UploadFile]):
+                formData.append('files', file); 
+            });
+
+            try {
+                // 2. Send to FastAPI
+                // IMPORTANT: Ensure '/upload' matches your FastAPI @app.post("/upload") route
+                const response = await fetch(`${API_BASE_URL}/upload`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error('Upload failed');
+
+                const result = await response.json();
+                
+                // Success UI Updates
+                uploadStatus.textContent = "Upload Complete!";
+                uploadStatus.className = "text-center text-xs mt-2 h-4 text-emerald-600 font-bold";
+                
+                // --- Session ID Handling (New in this version) ---
+                // We need to store the session ID returned by the backend to use it for queries.
+                const sessionId = result.session_id;
+                document.body.dataset.sessionId = sessionId; // Store in a data attribute
+                
+                Array.from(fileInput.files).forEach(file => {
+                    const docItem = document.createElement('div');
+                    docItem.className = 'flex items-center gap-2 p-2 rounded bg-white border border-slate-100 shadow-sm text-xs text-slate-700';
+                    docItem.innerHTML = `<i class="fa-solid fa-check text-emerald-500"></i> <span class="truncate">${file.name}</span>`;
+                    activeDocsList.prepend(docItem);
+                });
+
+                fileInput.value = '';
+                fileListPreview.innerHTML = '';
+                fileListPreview.classList.add('hidden');
+
+            } catch (error) {
+                console.error(error);
+                uploadStatus.textContent = "Error uploading files.";
+                uploadStatus.className = "text-center text-xs mt-2 h-4 text-red-500";
+            } finally {
+                isUploading = false;
+                uploadBtn.disabled = false;
+                uploadBtn.innerHTML = '<i class="fa-solid fa-arrow-up-from-bracket"></i> <span>Ingest Documents</span>';
+                
+                setTimeout(() => { uploadStatus.textContent = ''; }, 3000);
+            }
+        }
+
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            const query = userQueryInput.value.trim();
+            const sessionId = document.body.dataset.sessionId; // Retrieve the session ID
+            
+            if (!query || isGenerating) return;
+            if (!sessionId) {
+                addMessageToChat('ai', "Please upload and ingest your documents first to start a chat session.");
+                return;
+            }
+
+            // Add User Message
+            addMessageToChat('user', query);
+            userQueryInput.value = '';
+            isGenerating = true;
+            sendBtn.disabled = true;
+
+            const loadingId = addLoadingIndicator();
+
+            try {
+                // 1. Send Query to FastAPI
+                // The payload now includes the session_id
+                const response = await fetch(`${API_BASE_URL}/query`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ session_id: sessionId, question: query })
+                });
+
+                if (!response.ok) throw new Error('Network response was not ok');
+
+                const data = await response.json();
+                
+                removeLoadingIndicator(loadingId);
+                
+                // 2. Handle Response
+                const answer = data.answer || data.response || data.text || "I received the data but couldn't find the answer field.";
+                addMessageToChat('ai', answer);
+
+            } catch (error) {
+                removeLoadingIndicator(loadingId);
+                addMessageToChat('ai', 'Sorry, I encountered an error connecting to the server. Please check your backend connection.');
+                console.error('Chat Error:', error);
+            } finally {
+                isGenerating = false;
+                sendBtn.disabled = false;
+                userQueryInput.focus();
+            }
+        }
+
+        // --- UI Helper Functions ---
+
+        function addMessageToChat(role, text) {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'flex gap-4 max-w-3xl mx-auto fade-in';
+
+            if (role === 'user') {
+                wrapper.innerHTML = `
+                    <div class="flex-1 space-y-2">
+                        <div class="bg-indigo-600 text-white p-4 rounded-2xl rounded-tr-none shadow-sm text-sm leading-relaxed ml-auto w-fit max-w-[90%]">
+                            ${escapeHtml(text)}
+                        </div>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-200 flex items-center justify-center flex-shrink-0 text-slate-500 text-xs">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                `;
+            } else {
+                const htmlContent = marked.parse(text);
+                
+                wrapper.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center flex-shrink-0 text-white text-xs">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="flex-1 space-y-2">
+                        <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-none shadow-sm text-sm text-slate-700 leading-relaxed prose max-w-none">
+                            ${htmlContent}
+                        </div>
+                    </div>
+                `;
+            }
+
+            chatHistory.appendChild(wrapper);
+            scrollToBottom();
+        }
+
+        function addLoadingIndicator() {
+            const id = 'loader-' + Date.now();
+            const wrapper = document.createElement('div');
+            wrapper.id = id;
+            wrapper.className = 'flex gap-4 max-w-3xl mx-auto';
+            wrapper.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-indigo-600 flex items-center justify-center flex-shrink-0 text-white text-xs">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="flex-1">
+                    <div class="bg-white border border-slate-200 p-4 rounded-2xl rounded-tl-none shadow-sm w-fit">
+                        <div class="flex space-x-2">
+                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+                            <div class="w-2 h-2 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            chatHistory.appendChild(wrapper);
+            scrollToBottom();
+            return id;
+        }
+
+        function removeLoadingIndicator(id) {
+            const el = document.getElementById(id);
+            if (el) el.remove();
+        }
+
+        function scrollToBottom() {
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+    </script>
+</body>
+</html>

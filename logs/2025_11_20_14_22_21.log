@@ -1,0 +1,35 @@
+{"timestamp": "2025-11-20T13:22:22.258985Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T13:22:22.259575Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T13:22:22.259943Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T13:22:22.262793Z", "level": "info", "event": "YAML config loaded"}
+{"session_id": "session_20251120_142222_dc6858d8", "temp_dir": "data\\session_20251120_142222_dc6858d8", "faiss_dir": "faiss_index\\session_20251120_142222_dc6858d8", "sessionized": true, "timestamp": "2025-11-20T13:22:22.265730Z", "level": "info", "event": "ChatIngestor initialized"}
+{"uploaded": "data/Anatomy_1_Lecture_Notes.pdf", "saved_as": "data\\session_20251120_142222_dc6858d8\\9a729cc9.pdf", "timestamp": "2025-11-20T13:22:22.268343Z", "level": "info", "event": "File saved for ingestion"}
+{"count": 9, "timestamp": "2025-11-20T13:22:22.670601Z", "level": "info", "event": "Documents loaded"}
+{"chunks": 71, "chunk_size": 200, "overlap": 20, "timestamp": "2025-11-20T13:22:22.672417Z", "level": "info", "event": "Documents split"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-20T13:22:22.673125Z", "level": "info", "event": "Loading embedding model"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+{"added": 1, "index": "faiss_index\\session_20251120_142222_dc6858d8", "timestamp": "2025-11-20T13:22:51.430537Z", "level": "info", "event": "FAISS index updated"}
+{"k": 5, "fetch_k": 20, "lambda_mult": 0.5, "timestamp": "2025-11-20T13:22:51.431993Z", "level": "info", "event": "Using MMR search"}
+{"timestamp": "2025-11-20T13:22:51.440287Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T13:22:51.442145Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T13:22:51.443417Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T13:22:51.468115Z", "level": "info", "event": "YAML config loaded"}
+{"provider": "google", "model": "gemini-2.0-flash", "timestamp": "2025-11-20T13:22:51.470320Z", "level": "info", "event": "Loading LLM"}
+{"session_id": "session_20251120_142222_dc6858d8", "timestamp": "2025-11-20T13:22:51.525195Z", "level": "info", "event": "LLM loaded successfully"}
+{"session_id": "session_20251120_142222_dc6858d8", "timestamp": "2025-11-20T13:22:51.525949Z", "level": "info", "event": "ConversationalRAG initialized"}
+{"timestamp": "2025-11-20T13:22:51.529163Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-20T13:22:51.529703Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-20T13:22:51.530210Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-20T13:22:51.539481Z", "level": "info", "event": "YAML config loaded"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-20T13:22:51.540038Z", "level": "info", "event": "Loading embedding model"}
+{"session_id": "session_20251120_142222_dc6858d8", "timestamp": "2025-11-20T13:22:51.608712Z", "level": "info", "event": "LCEL graph built successfully"}
+{"index_path": "faiss_index\\session_20251120_142222_dc6858d8", "index_name": "index", "search_type": "mmr", "k": 5, "fetch_k": 20, "lambda_mult": 0.5, "session_id": "session_20251120_142222_dc6858d8", "timestamp": "2025-11-20T13:22:51.609392Z", "level": "info", "event": "FAISS retriever loaded successfully"}
+Failed to get info from https://eu.api.smith.langchain.com: LangSmithConnectionError('Connection error caused failure to GET /info in LangSmith API. Please confirm your LANGCHAIN_ENDPOINT. ConnectTimeout(MaxRetryError("HTTPSConnectionPool(host=\'eu.api.smith.langchain.com\', port=443): Max retries exceeded with url: /info (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001EFF9E1D090>, \'Connection to eu.api.smith.langchain.com timed out. (connect timeout=10.0)\'))"))\nContent-Length: None\nAPI Key: lsv2_********************************************e5')
+Failed to batch ingest runs: langsmith.utils.LangSmithConnectionError: Connection error caused failure to POST https://eu.api.smith.langchain.com/runs/batch in LangSmith API. Please confirm your LANGCHAIN_ENDPOINT. ConnectTimeout(MaxRetryError("HTTPSConnectionPool(host='eu.api.smith.langchain.com', port=443): Max retries exceeded with url: /runs/batch (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001EFF9E5E490>, 'Connection to eu.api.smith.langchain.com timed out. (connect timeout=10.0)'))"))
+Content-Length: 14325
+API Key: lsv2_********************************************e5
+post: trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=0a6fe28d-383d-4cac-800d-b6b9d2b67b94; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=da8c779c-19a4-4dca-9730-781c08586e66; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=f345a3a1-b7bd-4ef9-b79b-da711954a38c; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=8790fd35-e68b-4be5-b252-1374d4eeafd1; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=b9b49a69-ce61-4693-893e-28ce05e71e9b; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=e86ce414-422a-470e-a95a-3e35aeca2607; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=0bb3ba50-d25f-4bfc-acbc-9fe8ae87e45f; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=d2c2f9f5-f6e7-4a2b-b9c7-310c7758d870; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=7cb6b16e-1793-4a39-bb55-4c095a3a3309; trace=0a6fe28d-383d-4cac-800d-b6b9d2b67b94,id=4055d23c-a3ef-4fab-b79b-cdba6ef5a052
+{"session_id": "session_20251120_142222_dc6858d8", "user_input": "hi", "answer_preview": "I don't know.", "timestamp": "2025-11-20T13:27:43.582247Z", "level": "info", "event": "Chain invoked successfully"}
+Failed to batch ingest runs: langsmith.utils.LangSmithError: Failed to POST https://eu.api.smith.langchain.com/runs/batch in LangSmith API. HTTPError('403 Client Error: Forbidden for url: https://eu.api.smith.langchain.com/runs/batch', '{"error":"Forbidden"}\n')
+Failed to batch ingest runs: langsmith.utils.LangSmithError: Failed to POST https://eu.api.smith.langchain.com/runs/batch in LangSmith API. HTTPError('403 Client Error: Forbidden for url: https://eu.api.smith.langchain.com/runs/batch', '{"error":"Forbidden"}\n')

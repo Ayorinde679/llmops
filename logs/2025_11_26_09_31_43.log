@@ -1,0 +1,48 @@
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-26T08:31:58.375687Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-26T08:31:58.376687Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-26T08:31:58.377488Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-26T08:31:58.402361Z", "level": "info", "event": "YAML config loaded"}
+{"session_id": "session_20251126_093158_d42e5f95", "temp_dir": "data\\session_20251126_093158_d42e5f95", "faiss_dir": "faiss_index\\session_20251126_093158_d42e5f95", "sessionized": true, "timestamp": "2025-11-26T08:31:58.406303Z", "level": "info", "event": "ChatIngestor initialized"}
+{"uploaded": "Cerebellum.pdf", "saved_as": "data\\session_20251126_093158_d42e5f95\\84ade697.pdf", "timestamp": "2025-11-26T08:31:58.410434Z", "level": "info", "event": "File saved for ingestion"}
+{"count": 40, "timestamp": "2025-11-26T08:31:59.992580Z", "level": "info", "event": "Documents loaded"}
+{"chunks": 40, "chunk_size": 1000, "overlap": 200, "timestamp": "2025-11-26T08:31:59.999777Z", "level": "info", "event": "Documents split"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-26T08:32:00.001193Z", "level": "info", "event": "Loading embedding model"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+{"added": 1, "index": "faiss_index\\session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:32:03.310280Z", "level": "info", "event": "FAISS index updated"}
+{"k": 5, "fetch_k": 20, "lambda_mult": 0.5, "timestamp": "2025-11-26T08:32:03.311895Z", "level": "info", "event": "Using MMR search"}
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-26T08:32:24.547332Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-26T08:32:24.547935Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-26T08:32:24.548488Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-26T08:32:24.559370Z", "level": "info", "event": "YAML config loaded"}
+{"provider": "google", "model": "gemini-2.0-flash", "timestamp": "2025-11-26T08:32:24.560112Z", "level": "info", "event": "Loading LLM"}
+{"session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:32:24.580046Z", "level": "info", "event": "LLM loaded successfully"}
+{"session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:32:24.580637Z", "level": "info", "event": "ConversationalRAG initialized"}
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-26T08:32:24.583313Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-26T08:32:24.583685Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-26T08:32:24.584024Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-26T08:32:24.591586Z", "level": "info", "event": "YAML config loaded"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-26T08:32:24.592288Z", "level": "info", "event": "Loading embedding model"}
+{"session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:32:24.648966Z", "level": "info", "event": "LCEL graph built successfully"}
+{"index_path": "faiss_index/session_20251126_093158_d42e5f95", "index_name": "index", "search_type": "mmr", "k": 5, "fetch_k": 20, "lambda_mult": 0.5, "session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:32:24.649690Z", "level": "info", "event": "FAISS retriever loaded successfully"}
+{"session_id": "session_20251126_093158_d42e5f95", "user_input": "summarize this document extensively", "answer_preview": "The cerebellum, the largest part of the hindbrain, weighs about 150g and is situated dorsal to the pons and medulla, separated by the fourth ventricle", "timestamp": "2025-11-26T08:32:29.486859Z", "level": "info", "event": "Chain invoked successfully"}
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-26T08:33:56.804726Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-26T08:33:56.805431Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-26T08:33:56.806097Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-26T08:33:56.811421Z", "level": "info", "event": "YAML config loaded"}
+{"provider": "google", "model": "gemini-2.0-flash", "timestamp": "2025-11-26T08:33:56.812020Z", "level": "info", "event": "Loading LLM"}
+{"session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:33:56.818674Z", "level": "info", "event": "LLM loaded successfully"}
+{"session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:33:56.819541Z", "level": "info", "event": "ConversationalRAG initialized"}
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-26T08:33:56.824771Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-26T08:33:56.825452Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-26T08:33:56.825928Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-26T08:33:56.834371Z", "level": "info", "event": "YAML config loaded"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-26T08:33:56.835005Z", "level": "info", "event": "Loading embedding model"}
+{"session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:33:56.848276Z", "level": "info", "event": "LCEL graph built successfully"}
+{"index_path": "faiss_index/session_20251126_093158_d42e5f95", "index_name": "index", "search_type": "mmr", "k": 5, "fetch_k": 20, "lambda_mult": 0.5, "session_id": "session_20251126_093158_d42e5f95", "timestamp": "2025-11-26T08:33:56.848952Z", "level": "info", "event": "FAISS retriever loaded successfully"}
+{"session_id": "session_20251126_093158_d42e5f95", "user_input": "ask ten multiple question an provide answer", "answer_preview": "Okay, here are ten multiple-choice questions based on the provided text, along with their answers:\n\n**Question 1:**\n\nWhich of the following structures", "timestamp": "2025-11-26T08:34:35.669192Z", "level": "info", "event": "Chain invoked successfully"}

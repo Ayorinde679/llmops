@@ -1,0 +1,31 @@
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-25T11:22:59.175741Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-25T11:22:59.176270Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-25T11:22:59.176766Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-25T11:22:59.209940Z", "level": "info", "event": "YAML config loaded"}
+{"session_id": "session_20251125_122259_9a4dadd2", "temp_dir": "data\\session_20251125_122259_9a4dadd2", "faiss_dir": "faiss_index\\session_20251125_122259_9a4dadd2", "sessionized": true, "timestamp": "2025-11-25T11:22:59.213715Z", "level": "info", "event": "ChatIngestor initialized"}
+{"uploaded": "Cerebellum.pdf", "saved_as": "data\\session_20251125_122259_9a4dadd2\\0e79c2f4.pdf", "timestamp": "2025-11-25T11:22:59.218972Z", "level": "info", "event": "File saved for ingestion"}
+{"count": 40, "timestamp": "2025-11-25T11:23:00.212928Z", "level": "info", "event": "Documents loaded"}
+{"chunks": 40, "chunk_size": 1000, "overlap": 200, "timestamp": "2025-11-25T11:23:00.217816Z", "level": "info", "event": "Documents split"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-25T11:23:00.218935Z", "level": "info", "event": "Loading embedding model"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+{"added": 1, "index": "faiss_index\\session_20251125_122259_9a4dadd2", "timestamp": "2025-11-25T11:23:02.911315Z", "level": "info", "event": "FAISS index updated"}
+{"k": 5, "fetch_k": 20, "lambda_mult": 0.5, "timestamp": "2025-11-25T11:23:02.912087Z", "level": "info", "event": "Using MMR search"}
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-25T11:23:21.127350Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-25T11:23:21.128708Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-25T11:23:21.129936Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-25T11:23:21.157967Z", "level": "info", "event": "YAML config loaded"}
+{"provider": "google", "model": "gemini-2.0-flash", "timestamp": "2025-11-25T11:23:21.159929Z", "level": "info", "event": "Loading LLM"}
+{"session_id": "session_20251125_122259_9a4dadd2", "timestamp": "2025-11-25T11:23:21.210936Z", "level": "info", "event": "LLM loaded successfully"}
+{"session_id": "session_20251125_122259_9a4dadd2", "timestamp": "2025-11-25T11:23:21.212082Z", "level": "info", "event": "ConversationalRAG initialized"}
+python-dotenv could not parse statement starting at line 8
+{"timestamp": "2025-11-25T11:23:21.216841Z", "level": "info", "event": "Running in LOCAL mode: .env loaded"}
+{"timestamp": "2025-11-25T11:23:21.217813Z", "level": "info", "event": "Loaded API_KEYS from ECS secret"}
+{"keys": {"GOOGLE_API_KEY": "AIzaSy...", "GROQ_API_KEY": "gsk_cJ..."}, "timestamp": "2025-11-25T11:23:21.220130Z", "level": "info", "event": "API keys loaded"}
+{"config_keys": ["embedding_model", "retriever", "llm"], "timestamp": "2025-11-25T11:23:21.234622Z", "level": "info", "event": "YAML config loaded"}
+{"model": "models/text-embedding-004", "timestamp": "2025-11-25T11:23:21.237589Z", "level": "info", "event": "Loading embedding model"}
+{"session_id": "session_20251125_122259_9a4dadd2", "timestamp": "2025-11-25T11:23:21.305106Z", "level": "info", "event": "LCEL graph built successfully"}
+{"index_path": "faiss_index/session_20251125_122259_9a4dadd2", "index_name": "index", "search_type": "mmr", "k": 5, "fetch_k": 20, "lambda_mult": 0.5, "session_id": "session_20251125_122259_9a4dadd2", "timestamp": "2025-11-25T11:23:21.305800Z", "level": "info", "event": "FAISS retriever loaded successfully"}
+{"session_id": "session_20251125_122259_9a4dadd2", "user_input": "summarize the document", "answer_preview": "The document provides information about the cerebellum, including its structure, functional subdivisions, vermis parts, and microanatomy. Each folium ", "timestamp": "2025-11-25T11:23:25.040713Z", "level": "info", "event": "Chain invoked successfully"}
