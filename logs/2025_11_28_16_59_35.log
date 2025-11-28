@@ -1,0 +1,6 @@
+{"session_id": "session_20251128_165935_138bfdb7", "temp_dir": "data\\session_20251128_165935_138bfdb7", "faiss_dir": "faiss_index\\session_20251128_165935_138bfdb7", "sessionized": true, "timestamp": "2025-11-28T15:59:35.466049Z", "level": "info", "event": "ChatIngestor initialized"}
+{"session_id": "session_20251128_165935_95aa510c", "temp_dir": "data\\session_20251128_165935_95aa510c", "faiss_dir": "faiss_index\\session_20251128_165935_95aa510c", "sessionized": true, "timestamp": "2025-11-28T15:59:35.472507Z", "level": "info", "event": "ChatIngestor initialized"}
+{"chunks": 3, "chunk_size": 500, "overlap": 100, "timestamp": "2025-11-28T15:59:35.474183Z", "level": "info", "event": "Documents split"}
+Loading faiss with AVX2 support.
+Successfully loaded faiss with AVX2 support.
+`embedding_function` is expected to be an Embeddings object, support for passing in a function will soon be removed.

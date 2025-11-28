@@ -3,6 +3,8 @@ import os
 import pathlib
 import sys
 import pytest
+import shutil
+import fastapi
 from fastapi.testclient import TestClient
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]

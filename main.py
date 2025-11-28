@@ -73,11 +73,10 @@ class UploadResponse(BaseModel):
 
 class ChatRequest(BaseModel):
     """
-    CORRECTION: Changed 'message' to 'question' to fix the recurring 422 error
-    caused by frontends sending { "question": "..." }
+    ChatRequest expects session_id and message field.
     """
     session_id: str
-    question: str
+    message: str
 
 
 class ChatResponse(BaseModel):
@@ -136,12 +135,12 @@ async def upload(files: List[UploadFile] = File(...)) -> UploadResponse:
 @app.post("/query", response_model=ChatResponse)
 async def chat(req: ChatRequest) -> ChatResponse:
     session_id = req.session_id
-    question = req.question.strip() # CORRECTION: Use 'question' from the Pydantic model
+    question = req.message.strip()
     
     if not session_id or session_id not in SESSIONS:
         raise HTTPException(status_code=400, detail="Invalid or expired session_id. Re-upload documents.")
     if not question:
-        raise HTTPException(status_code=400, detail="Question cannot be empty")
+        raise HTTPException(status_code=400, detail="Message cannot be empty")
 
     try:
         # Build RAG and load retriever from persisted FAISS with MMR
