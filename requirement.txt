@@ -22,6 +22,4 @@ langsmith
 openai
 pandas
 pytest
-fastapi[all]
-
 httpx
