@@ -267,7 +267,7 @@
                 const response = await fetch(`${API_BASE_URL}/query`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ session_id: sessionId, question: query })
+                    body: JSON.stringify({ session_id: sessionId, message: query })
                 });
 
                 if (!response.ok) throw new Error('Network response was not ok');
