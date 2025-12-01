@@ -19,3 +19,4 @@ python-dotenv==1.1.1
 python-multipart==0.0.20
 structlog>=25.5.0
 uvicorn==0.32.1
+asgiref>=3.7.0
