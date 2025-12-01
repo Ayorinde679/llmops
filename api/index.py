@@ -2,11 +2,17 @@
 import sys
 from pathlib import Path
 
-# Add parent directory to path so we can import modules
+# Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
-# Import and return the FastAPI app
 from main import app
 
-# For Vercel - export the ASGI app
-__all__ = ['app']
+# For Vercel serverless, we need to handle the ASGI app properly
+# Vercel will call this as the handler
+def handler(request):
+    """This is called by Vercel for each request"""
+    # For ASGI apps on Vercel, we need the Mangum adapter
+    from mangum import Mangum
+    
+    asgi_handler = Mangum(app)
+    return asgi_handler(request)
