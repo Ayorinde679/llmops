@@ -6,6 +6,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from main import app
+from fastapi.middleware.wsgi import WSGIMiddleware
 
-# Export the app as the handler
-handler = app
+# Vercel expects an ASGI app
+# Export as default for Vercel
+app = app
