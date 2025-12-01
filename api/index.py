@@ -7,3 +7,6 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 # Import and return the FastAPI app
 from main import app
+
+# For Vercel - export the ASGI app
+__all__ = ['app']
