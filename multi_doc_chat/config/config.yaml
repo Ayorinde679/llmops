@@ -1,6 +1,10 @@
 embedding_model:
   provider: "google"
-  model_name: "models/text-embedding-004"
+  # Use a Google Generative AI embedding model name here. "models/text-embedding-004"
+  # was an OpenAI-style model path and isn't valid for Google's API. If
+  # `embed-text-bison-001` returns a 404 (not supported for embedContent),
+  # try a Gecko embedding model which is commonly available for embedding:
+  model_name: "textembedding-gecko-001"
 
 retriever:
   top_k: 10
