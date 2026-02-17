@@ -4,7 +4,7 @@ embedding_model:
   # was an OpenAI-style model path and isn't valid for Google's API. If
   # `embed-text-bison-001` returns a 404 (not supported for embedContent),
   # try a Gecko embedding model which is commonly available for embedding:
-  model_name: "textembedding-gecko-001"
+  model_name: "gemini-embedding-001"
 
 retriever:
   top_k: 10
@@ -22,6 +22,6 @@ llm:
 
   google:
     provider: "google"
-    model_name: "gemini-2.0-flash"
+    model_name: "gemini-3-flash-preview"
     temperature: 0
     max_output_tokens: 2048
